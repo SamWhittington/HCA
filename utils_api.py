@@ -88,7 +88,7 @@ def get_factcheck(phrase: str, datadir='.') -> dict:
         for tid,t in enumerate(df.title.iloc[:]):
             d = dist(set_phrase, clean_text(t).split())
             if (d > dmax):
-                print(set_phrase, t, d)
+                # print(set_phrase, t, d)
                 tidmax = tid
                 dmax = d
         res[k] = {'title': df.title.loc[tidmax], 'score': dmax}
