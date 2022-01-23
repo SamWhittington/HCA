@@ -4,9 +4,10 @@ from monkeylearn import MonkeyLearn
 import requests
 import json
 
-def get_sentiment(phrase: str) -> tuple:
+def get_sentiment(phrase: str) -> dict:
     """
     Get sentiment on phrase from monkeylearn API.
+
     Result:
         label = str
         confidence = float
@@ -24,9 +25,10 @@ def get_sentiment(phrase: str) -> tuple:
 def get_news_headers(phrase: str,
                     key_from='2021-12-24',
                     key_pageSize='5',
-                    ) -> tuple:
+                    ) -> dict:
     """
     Get a list of recent news on phrase from newsapi API.
+
     Result:
         articles = List( title = str,
                            url = str,
