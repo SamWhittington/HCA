@@ -116,7 +116,7 @@ const Typography = () => {
                                     gutterBottom
                                     underline="hover"
                                 >
-                                    https://berrydashboard.io
+                                    https://smart-fact-check.io
                                 </MuiTypography>
                             </Grid>
                         </Grid>

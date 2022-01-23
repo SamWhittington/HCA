@@ -64,12 +64,12 @@ const UpgradePlanCard = () => {
                 <Grid container direction="column" spacing={2}>
                     <Grid item>
                         <Typography variant="h4">
-                            Flask React Berry
+                           Smart Fact Check 
                         </Typography>
                     </Grid>
                     <Grid item>
                         <Typography variant="subtitle2" className={classes.tagLine}>
-                            Open-source full-stack seed project.
+                            Smart Fact Check Project
                         </Typography>
                     </Grid>
                     <Grid item>
@@ -82,7 +82,7 @@ const UpgradePlanCard = () => {
                                     variant="contained"
                                     className={classes.button}
                                 >
-                                    See Product
+                                    Fact Check
                                 </Button>
                             </AnimateButton>
                         </Stack>

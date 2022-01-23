@@ -172,17 +172,12 @@ const EarningCard = ({ isLoading }) => {
                         <Grid item>
                             <Grid container alignItems="center">
                                 <Grid item>
-                                    <Typography className={classes.cardHeading}>$500.00</Typography>
-                                </Grid>
-                                <Grid item>
-                                    <Avatar className={classes.avatarCircle}>
-                                        <ArrowUpwardIcon fontSize="inherit" className={classes.circleIcon} />
-                                    </Avatar>
+                                    <Typography className={classes.cardHeading}>Fake Content Detected</Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item sx={{ mb: 1.25 }}>
-                            <Typography className={classes.subHeading}>Total Earning</Typography>
+                            <Typography className={classes.subHeading}>Total Likelihood: 95%</Typography>
                         </Grid>
                     </Grid>
                 </MainCard>

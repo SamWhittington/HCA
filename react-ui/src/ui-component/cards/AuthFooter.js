@@ -9,10 +9,10 @@ const AuthFooter = () => {
     return (
         <Stack direction="row" justifyContent="space-between">
             <Typography variant="subtitle2" component={Link} href="https://berrydashboard.io" target="_blank" underline="hover">
-                berrydashboard.io
+                Smart Fact Check    
             </Typography>
             <Typography variant="subtitle2" component={Link} href="https://codedthemes.com" target="_blank" underline="hover">
-                &copy; codedthemes.com
+                &copy; smart-fact-check.io
             </Typography>
         </Stack>
     );

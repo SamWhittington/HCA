@@ -145,9 +145,9 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                     <Grid container alignItems="center">
                                         <Grid item>
                                             {timeValue ? (
-                                                <Typography className={classes.cardHeading}>$108</Typography>
+                                                <Typography className={classes.cardHeading}>Trending</Typography>
                                             ) : (
-                                                <Typography className={classes.cardHeading}>$961</Typography>
+                                                <Typography className={classes.cardHeading}>Trending</Typography>
                                             )}
                                         </Grid>
                                         <Grid item>
@@ -156,7 +156,7 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                             </Avatar>
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Typography className={classes.subHeading}>Total Order</Typography>
+                                            <Typography className={classes.subHeading}>Traction over time</Typography>
                                         </Grid>
                                     </Grid>
                                 </Grid>
