@@ -3,6 +3,8 @@
 from monkeylearn import MonkeyLearn
 import requests
 import json
+import pandas as pd
+import string, re
 
 def get_sentiment(phrase: str) -> dict:
     """
@@ -56,7 +58,7 @@ def get_news_headers(phrase: str,
     return res
 
 
-def get_factcheck(phrase: str) -> dict:
+def get_factcheck(phrase: str, datadir='.') -> dict:
     """
     Get a list of relevant factchecked articles given request.
 
@@ -75,7 +77,8 @@ def get_factcheck(phrase: str) -> dict:
         return text_no_doublespace
 
     res = {}
-    dfs = dict(true=pd.read_csv('True.csv'), fake=pd.read_csv('Fake.csv'))
+    dfs = dict(true=pd.read_csv(f'{datadir}/True.csv'),
+               fake=pd.read_csv(f'{datadir}/Fake.csv'))
     for k in 'true fake'.split():
         res[k] = {}
         df = dfs[k]
