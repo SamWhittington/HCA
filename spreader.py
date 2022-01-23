@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
+import sys
 from utils_api import get_sentiment, get_news_headers, get_factcheck
+from audio2text import get_transcript
 
 def request_analysis(phrase: str, func) -> dict:
     res = func(phrase)
@@ -37,6 +39,10 @@ if (__name__ == "__main__"):
     parser.add_argument('-s', type=str, dest='phrase', help='Input phrase')
     parser.add_argument('-f', type=str, dest='path', help='Path to file')
     args = parser.parse_args()
+
+    if len(sys.argv)==1:
+        parser.print_help()
+        sys.exit(1)
 
     phrase = ''
     if (args.phrase != None): phrase = args.phrase
