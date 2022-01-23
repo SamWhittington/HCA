@@ -36,7 +36,7 @@ def main(phrase: str):
     # print(phrase)
     res = get_ml_analysis(phrase)
     print("ML analysis:\n\t")
-    print(res)
+    print({1:"likely fake", 0:"likely true"}[res['result']])
 
 
 if (__name__ == "__main__"):
