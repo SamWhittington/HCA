@@ -1,4 +1,4 @@
-# [FakeSpread]
+# FakeSpread
 
 ## General Information
 
