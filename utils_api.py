@@ -2,6 +2,7 @@
 
 from monkeylearn import MonkeyLearn
 import requests
+import pickle
 import json
 import pandas as pd
 import string, re
@@ -94,4 +95,50 @@ def get_factcheck(phrase: str, datadir='.') -> dict:
         res[k] = {'title': df.title.loc[tidmax], 'score': dmax}
 
     return res
+
+
+def get_ml_analysis(phrase: str, datadir='.') -> dict:
+    import nltk as nlp # Main Library for NLP
+    from nltk.corpus import stopwords # stopwords
+    from nltk.util import ngrams
+    # nlp.download("stopwords")
+    # nlp.download('omw-1.4')
+
+    lemma=nlp.WordNetLemmatizer()
+    def clean_text(text):
+        text = text.replace('’s','')
+        text_nopunct = "".join([char.lower() for char in text if char not in string.punctuation])
+        text_no_doublespace = re.sub('\s+', ' ', text_nopunct).strip()
+        return text_no_doublespace
+
+    # def text_process(data):
+    #     text_list=[]
+    #     for text in data.text:
+    #         text=re.sub("[^a-zA-Z]"," ",text) # extracting unnecesary characters
+    #         text=text.lower() #makes characters lowercase
+    #         text=nlp.word_tokenize(text) # splits all the words
+    #         text=[word for word in text
+    #                     if not word in set(stopwords.words("english"))] # extract stopwords
+    #         text=[lemma.lemmatize(word) for word in text] # Lemmatisation
+    #         text=" ".join(text)
+    #         text_list.append(text)
+
+    # return text_list
+    with open('model.pkl', 'rb') as f:
+        model = pickle.load(f)
+
+    with open('countvectorizer.pkl', 'rb') as f:
+        cv = pickle.load(f)
+
+    # print(cv.get_feature_names())
+
+    phrase_df = pd.DataFrame({'text': [phrase]})
+    # print(phrase_df)
+    # print(text_process(phrase_df))
+    print(phrase)
+
+    res = model.predict(cv.transform([clean_text(phrase).split()])) #text_process(phrase_df)))
+
+    return {'result': res[0]}
+
 
