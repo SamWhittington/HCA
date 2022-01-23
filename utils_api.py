@@ -54,3 +54,41 @@ def get_news_headers(phrase: str,
                                 'date': a.get('publishedAt')})
 
     return res
+
+
+def get_factcheck(phrase: str) -> dict:
+    """
+    Get a list of relevant factchecked articles given request.
+
+    Currently, uses Kaggle dataset and simply matches the similar
+    entries to the string based on mutual set intersection measure.
+    """
+
+    def dist(a,b):
+        c = set(b)
+        return 2.*len(a.intersection(c)) / (len(a) + len(c))
+
+    def clean_text(text):
+        text = text.replace('’s','')
+        text_nopunct = "".join([char.lower() for char in text if char not in string.punctuation])
+        text_no_doublespace = re.sub('\s+', ' ', text_nopunct).strip()
+        return text_no_doublespace
+
+    res = {}
+    dfs = dict(true=pd.read_csv('True.csv'), fake=pd.read_csv('Fake.csv'))
+    for k in 'true fake'.split():
+        res[k] = {}
+        df = dfs[k]
+        dmax = 0
+        tidmax = 0
+        set_phrase = set(clean_text(phrase).split())
+        for tid,t in enumerate(df.title.iloc[:]):
+            d = dist(set_phrase, clean_text(t).split())
+            if (d > dmax):
+                print(set_phrase, t, d)
+                tidmax = tid
+                dmax = d
+        res[k] = {'title': df.title.loc[tidmax], 'score': dmax}
+
+    return res
+
