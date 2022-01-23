@@ -175,7 +175,7 @@ function TotalGrowthBarChart() {
 
     for (let key in state) {
       if (state[key] === '') {
-        setError(`Something went wrong with the ${key}`)
+        setError(`Re-upload new audio to perform new analysis`)
         return
       }
     }
