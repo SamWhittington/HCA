@@ -135,9 +135,10 @@ def get_ml_analysis(phrase: str, datadir='.') -> dict:
     phrase_df = pd.DataFrame({'text': [phrase]})
     # print(phrase_df)
     # print(text_process(phrase_df))
-    print(phrase)
+    # print(phrase)
+    # print(clean_text(phrase))
 
-    res = model.predict(cv.transform([clean_text(phrase).split()])) #text_process(phrase_df)))
+    res = model.predict(cv.transform([clean_text(phrase)])) #text_process(phrase_df)))
 
     return {'result': res[0]}
 

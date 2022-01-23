@@ -34,9 +34,9 @@ def main(phrase: str):
     print("---------------------")
 
     # print(phrase)
-    # res = get_ml_analysis(phrase)
-    # print("ML analysis:\n\t")
-    # print(res)
+    res = get_ml_analysis(phrase)
+    print("ML analysis:\n\t")
+    print(res)
 
 
 if (__name__ == "__main__"):
